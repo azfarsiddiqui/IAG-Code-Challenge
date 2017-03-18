@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/ui_card_inset_padding">
+
+        <ImageView
+            android:id="@+id/type_iv"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title_tv"
+            android:scaleType="center"
+            android:src="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/PolicyTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/type_iv"
+            android:ellipsize="end"
+            android:lines="1"
+            tools:text="2015 Toyota Aurion ABC123"/>
+
+        <TextView
+            android:id="@+id/date_tv"
+            style="@style/PolicyInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/title_tv"
+            android:layout_below="@+id/title_tv"
+            android:layout_marginBottom="@dimen/ui_element_related_margin"
+            android:layout_marginTop="@dimen/ui_element_margin"
+            android:ellipsize="end"
+            android:lines="1"
+            tools:text="15th June 15 - 14th Jun 16"/>
+
+        <TextView
+            android:id="@+id/type_tv"
+            style="@style/PolicyInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/date_tv"
+            android:layout_marginBottom="@dimen/ui_element_related_margin"
+            android:layout_toRightOf="@id/type_iv"
+            android:ellipsize="end"
+            android:lines="1"
+            tools:text="Comprehensive Car Insurance"/>
+
+        <TextView
+            android:id="@+id/premium_tv"
+            style="@style/PolicyInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/type_tv"
+            android:layout_toRightOf="@id/type_iv"
+            android:ellipsize="end"
+            android:lines="1"
+            tools:text="$682.92"/>
+
+    </RelativeLayout>

@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="ui_element_margin">5dp</dimen>
+    <dimen name="ui_element_related_margin">2dp</dimen>
+    <dimen name="ui_card_inset_padding">7dp</dimen>
+    <dimen name="subheading_txt">18sp</dimen>
+    <dimen name="body_txt">14sp</dimen>
+</resources>
