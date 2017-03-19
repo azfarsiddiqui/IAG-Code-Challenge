@@ -6,5 +6,6 @@
     <color name="copy">#414042</color>
     <color name="copy_light">#999999</color>
     <color name="attention">@android:color/holo_red_light</color>
+    <color name="list_item_background">@android:color/white</color>
 
 </resources>

@@ -2,7 +2,6 @@ package au.com.iag.view;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
@@ -29,7 +28,5 @@ public class LinearRecyclerView extends RecyclerView {
     private void setLayoutManagerAndDivider() {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         setLayoutManager(mLayoutManager);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
-        addItemDecoration(dividerItemDecoration);
     }
 }
