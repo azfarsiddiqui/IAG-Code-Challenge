@@ -3,4 +3,5 @@
     <string name="generic_network_error">Sorry, we were unable to process the request. Please try again by swiping down.</string>
     <string name="no_data_available">Its lonely in here.. try swiping down to see if you have any policies</string>
     <string name="policy_list_item_date_range">%1$s - %2$s</string>
+    <string name="currency_text">$%1$s</string>
 </resources>

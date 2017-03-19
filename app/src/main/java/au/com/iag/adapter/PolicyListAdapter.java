@@ -45,7 +45,7 @@ public class PolicyListAdapter extends RecyclerView.Adapter<PolicyListAdapter.Vi
         holder.mDateTv.setText(mContext.getString(R.string.policy_list_item_date_range,
                 policy.getFormattedStartDate(), policy.getFormattedRenewalDate()));
         holder.mTypeTv.setText(policy.getType());
-        holder.mPremiumTv.setText("$" + policy.getPremium());
+        holder.mPremiumTv.setText(mContext.getString(R.string.currency_text, policy.getPremium()));
         holder.mStatusTv.setVisibility(policy.needsRenewal() ? View.VISIBLE : View.GONE);
     }
 
