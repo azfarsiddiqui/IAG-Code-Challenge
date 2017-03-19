@@ -6,6 +6,6 @@
     <dimen name="ui_card_horizontal_margin">10dp</dimen>
     <dimen name="ui_card_top_margin">5dp</dimen>
     <dimen name="ui_card_bottom_margin">2dp</dimen>
-    <dimen name="subheading_txt">18sp</dimen>
+    <dimen name="subheading_txt">16sp</dimen>
     <dimen name="body_txt">14sp</dimen>
 </resources>

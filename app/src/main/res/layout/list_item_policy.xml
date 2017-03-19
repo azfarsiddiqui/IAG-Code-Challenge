@@ -28,6 +28,7 @@
             style="@style/PolicyTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/ui_element_margin"
             android:layout_toRightOf="@id/type_iv"
             android:ellipsize="end"
             android:lines="1"
@@ -64,9 +65,9 @@
             style="@style/PolicyInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/title_tv"
             android:layout_below="@id/date_tv"
             android:layout_marginBottom="@dimen/ui_element_related_margin"
-            android:layout_toRightOf="@id/type_iv"
             android:ellipsize="end"
             android:lines="1"
             tools:text="Comprehensive Car Insurance"/>
@@ -76,8 +77,8 @@
             style="@style/PolicyInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/title_tv"
             android:layout_below="@id/type_tv"
-            android:layout_toRightOf="@id/type_iv"
             android:ellipsize="end"
             android:lines="1"
             tools:text="$682.92"/>

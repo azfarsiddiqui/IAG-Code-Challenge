@@ -40,8 +40,16 @@ public class PolicyListAdapter extends RecyclerView.Adapter<PolicyListAdapter.Vi
     public void onBindViewHolder(ViewHolder holder, int position) {
         Policy policy = mPolicyList.get(position);
 
+        int iconResId = policy.getIconResId();
+        if (iconResId > 0) {
+            holder.mTypeIv.setVisibility(View.VISIBLE);
+            holder.mTypeIv.setImageResource(policy.getIconResId());
+        }
+        else {
+            holder.mTypeIv.setVisibility(View.GONE);
+        }
+
         holder.mTitleTv.setText(policy.getTitle());
-        holder.mTypeIv.setImageResource(policy.getIconResId());
         holder.mDateTv.setText(mContext.getString(R.string.policy_list_item_date_range,
                 policy.getFormattedStartDate(), policy.getFormattedRenewalDate()));
         holder.mTypeTv.setText(policy.getType());
