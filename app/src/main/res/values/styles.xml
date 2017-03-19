@@ -19,4 +19,9 @@
         <item name="android:textColor">@color/copy_light</item>
     </style>
 
+    <style name="EmptyText">
+        <item name="android:textSize">@dimen/subheading_txt</item>
+        <item name="android:textColor">@color/copy</item>
+    </style>
+
 </resources>
