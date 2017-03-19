@@ -45,6 +45,10 @@ public class Policy implements Parcelable, Comparable<Policy> {
     @SerializedName("premium")
     private float mPremium;
 
+    public Policy() {
+
+    }
+
     protected Policy(Parcel in) {
         mId = in.readString();
         mStatus = in.readString();
@@ -83,18 +87,6 @@ public class Policy implements Parcelable, Comparable<Policy> {
         return mId;
     }
 
-    public Date getStartDate() {
-        return mStartDate;
-    }
-
-    public Date getRenewalDate() {
-        return mRenewalDate;
-    }
-
-    public String getStatus() {
-        return mStatus;
-    }
-
     public String getType() {
         return mType;
     }
@@ -107,16 +99,20 @@ public class Policy implements Parcelable, Comparable<Policy> {
         return mPremium;
     }
 
-    public boolean isExpired() {
-        return true;
-    }
-
     public String getFormattedStartDate() {
         return DATE_FORMATTER_UI.format(mStartDate);
     }
 
     public String getFormattedRenewalDate() {
         return DATE_FORMATTER_UI.format(mRenewalDate);
+    }
+
+    public void setRenewalDate(Date renewalDate) {
+        mRenewalDate = renewalDate;
+    }
+
+    public void setType(String type) {
+        mType = type;
     }
 
     public boolean needsRenewal() {
@@ -135,7 +131,7 @@ public class Policy implements Parcelable, Comparable<Policy> {
 
     @Override
     public int compareTo(Policy another) {
-        if (getRenewalDate().getTime() > another.getRenewalDate().getTime()) return -1;
+        if (mRenewalDate.getTime() > another.mRenewalDate.getTime()) return -1;
         return 1;
     }
 }
