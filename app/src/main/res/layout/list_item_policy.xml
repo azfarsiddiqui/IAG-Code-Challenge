@@ -35,7 +35,20 @@
             android:layout_marginTop="@dimen/ui_element_margin"
             android:ellipsize="end"
             android:lines="1"
-            tools:text="15th June 15 - 14th Jun 16"/>
+            tools:text="15 Jun. 15 - 14 Jun. 16"/>
+
+        <TextView
+            android:id="@+id/status_tv"
+            style="@style/Attention"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/date_tv"
+            android:layout_below="@+id/title_tv"
+            android:layout_alignTop="@id/date_tv"
+            android:layout_marginLeft="@dimen/ui_element_spacious_margin"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="Please renew"/>
 
         <TextView
             android:id="@+id/type_tv"

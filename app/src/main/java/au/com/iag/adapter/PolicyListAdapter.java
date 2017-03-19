@@ -1,5 +1,6 @@
 package au.com.iag.adapter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.HashMap;
 import java.util.List;
 
 import au.com.iag.R;
@@ -20,10 +22,11 @@ import butterknife.InjectView;
  */
 
 public class PolicyListAdapter extends RecyclerView.Adapter<PolicyListAdapter.ViewHolder> {
-
+    private Context mContext;
     private List<Policy> mPolicyList;
 
-    public PolicyListAdapter(@NonNull List<Policy> policyList) {
+    public PolicyListAdapter(@NonNull Context context, @NonNull List<Policy> policyList) {
+        mContext = context;
         mPolicyList = policyList;
     }
 
@@ -38,9 +41,12 @@ public class PolicyListAdapter extends RecyclerView.Adapter<PolicyListAdapter.Vi
         Policy policy = mPolicyList.get(position);
 
         holder.mTitleTv.setText(policy.getTitle());
-        holder.mDateTv.setText(policy.getStartDate() + " - " + policy.getRenewalDate());
+        holder.mTypeIv.setImageResource(policy.getIconResId());
+        holder.mDateTv.setText(mContext.getString(R.string.policy_list_item_date_range,
+                policy.getFormattedStartDate(), policy.getFormattedRenewalDate()));
         holder.mTypeTv.setText(policy.getType());
         holder.mPremiumTv.setText("$" + policy.getPremium());
+        holder.mStatusTv.setVisibility(policy.needsRenewal() ? View.VISIBLE : View.GONE);
     }
 
     @Override
@@ -54,6 +60,9 @@ public class PolicyListAdapter extends RecyclerView.Adapter<PolicyListAdapter.Vi
 
         @InjectView(R.id.date_tv)
         public TextView mDateTv;
+
+        @InjectView(R.id.status_tv)
+        public TextView mStatusTv;
 
         @InjectView(R.id.type_tv)
         public TextView mTypeTv;

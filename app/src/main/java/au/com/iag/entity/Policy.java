@@ -5,13 +5,25 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+
+import au.com.iag.R;
 
 /**
  * Created by siddiquim on 3/17/17.
  */
 
-public class Policy implements Parcelable {
+public class Policy implements Parcelable, Comparable<Policy> {
+    private static final SimpleDateFormat DATE_FORMATTER_UI = new SimpleDateFormat("dd MMM yy");
+
+    private static HashMap<String, Integer> sIconResMap = new HashMap<String, Integer>() {{
+        put("Comprehensive Car Insurance", R.drawable.ic_car_insurance);
+        put("Home Buildings Insurance", R.drawable.ic_home_insurance);
+        put("CTP GreenSlip Insurance", R.drawable.ic_ctp);
+    }};
+
     @SerializedName("policy_number")
     private String mId;
 
@@ -32,17 +44,6 @@ public class Policy implements Parcelable {
 
     @SerializedName("premium")
     private float mPremium;
-
-
-    public Policy(String id, Date startDate, Date renewalDate, String status, String type, String title, float premium) {
-        mId = id;
-        mStartDate = startDate;
-        mRenewalDate = renewalDate;
-        mStatus = status;
-        mType = type;
-        mTitle = title;
-        mPremium = premium;
-    }
 
     protected Policy(Parcel in) {
         mId = in.readString();
@@ -108,5 +109,33 @@ public class Policy implements Parcelable {
 
     public boolean isExpired() {
         return true;
+    }
+
+    public String getFormattedStartDate() {
+        return DATE_FORMATTER_UI.format(mStartDate);
+    }
+
+    public String getFormattedRenewalDate() {
+        return DATE_FORMATTER_UI.format(mRenewalDate);
+    }
+
+    public boolean needsRenewal() {
+        return mStatus.equals("Renewal");
+    }
+
+    public int getIconResId() {
+        int iconResId = 0;
+
+        if (sIconResMap.containsKey(mType)) {
+            iconResId = sIconResMap.get(mType);
+        }
+
+        return iconResId;
+    }
+
+    @Override
+    public int compareTo(Policy another) {
+        if (getRenewalDate().getTime() > another.getRenewalDate().getTime()) return -1;
+        return 1;
     }
 }

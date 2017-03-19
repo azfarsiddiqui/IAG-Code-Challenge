@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Collections;
 import java.util.List;
 
 import au.com.iag.R;
@@ -48,12 +48,10 @@ public class PolicyListActivity extends BaseActivity implements SwipeRefreshLayo
                 updateUI();
             }
             else {
-                showLoader();
                 dispatchApiRequestToGetPolicyList();
             }
         }
         else {
-            showLoader();
             dispatchApiRequestToGetPolicyList();
         }
     }
@@ -84,6 +82,8 @@ public class PolicyListActivity extends BaseActivity implements SwipeRefreshLayo
     }
 
     private void dispatchApiRequestToGetPolicyList() {
+        showLoader();
+
         PolicyDataLayer layer = new PolicyDataLayer();
 
         layer.getList().observeOn(AndroidSchedulers.mainThread())
@@ -106,26 +106,6 @@ public class PolicyListActivity extends BaseActivity implements SwipeRefreshLayo
                 });
     }
 
-    private void prepareDummyDateSource() {
-        Policy policy1 = new Policy("MOT019396613", new Date(), new Date(), "Current", "Comprehensive Car Insurance", "388 GEORGE STREET SYDNEY 2000 NSW", 682.22f);
-        Policy policy2 = new Policy("MOT019396613", new Date(), new Date(), "Current", "Comprehensive Car Insurance", "388 GEORGE STREET SYDNEY 2000 NSW", 682.22f);
-        Policy policy3 = new Policy("MOT019396613", new Date(), new Date(), "Current", "Comprehensive Car Insurance", "388 GEORGE STREET SYDNEY 2000 NSW", 682.22f);
-        Policy policy4 = new Policy("MOT019396613", new Date(), new Date(), "Current", "Comprehensive Car Insurance", "388 GEORGE STREET SYDNEY 2000 NSW", 682.22f);
-        Policy policy5 = new Policy("MOT019396613", new Date(), new Date(), "Current", "Comprehensive Car Insurance", "388 GEORGE STREET SYDNEY 2000 NSW", 682.22f);
-        Policy policy6 = new Policy("MOT019396613", new Date(), new Date(), "Current", "Comprehensive Car Insurance", "388 GEORGE STREET SYDNEY 2000 NSW", 682.22f);
-        Policy policy7 = new Policy("MOT019396613", new Date(), new Date(), "Current", "Comprehensive Car Insurance", "388 GEORGE STREET SYDNEY 2000 NSW", 682.22f);
-        Policy policy8 = new Policy("MOT019396613", new Date(), new Date(), "Current", "Comprehensive Car Insurance", "388 GEORGE STREET SYDNEY 2000 NSW", 682.22f);
-
-        mPolicyList.add(policy1);
-        mPolicyList.add(policy2);
-        mPolicyList.add(policy3);
-        mPolicyList.add(policy4);
-        mPolicyList.add(policy5);
-        mPolicyList.add(policy6);
-        mPolicyList.add(policy7);
-        mPolicyList.add(policy8);
-    }
-
     private void showLoader() {
         mPolicySrl.setRefreshing(true);
     }
@@ -140,12 +120,13 @@ public class PolicyListActivity extends BaseActivity implements SwipeRefreshLayo
         mPolicyLrv.setVisibility(hasData ? View.VISIBLE : View.GONE);
 
         if (hasData) {
-            mPolicyLrv.setAdapter(new PolicyListAdapter(mPolicyList));
+            Collections.sort(mPolicyList);
+            mPolicyLrv.setAdapter(new PolicyListAdapter(this, mPolicyList));
         }
     }
 
     @Override
     public void onRefresh() {
-        hideLoader();
+        dispatchApiRequestToGetPolicyList();
     }
 }

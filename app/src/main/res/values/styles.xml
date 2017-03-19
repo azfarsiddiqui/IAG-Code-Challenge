@@ -12,6 +12,7 @@
         <item name="android:textSize">@dimen/subheading_txt</item>
         <item name="android:textColor">@color/copy</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
     <style name="PolicyInfo">
@@ -22,6 +23,12 @@
     <style name="EmptyText">
         <item name="android:textSize">@dimen/subheading_txt</item>
         <item name="android:textColor">@color/copy</item>
+    </style>
+
+    <style name="Attention">
+        <item name="android:textSize">@dimen/body_txt</item>
+        <item name="android:textColor">@color/attention</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>
