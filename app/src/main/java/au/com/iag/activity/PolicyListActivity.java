@@ -84,9 +84,9 @@ public class PolicyListActivity extends BaseActivity implements SwipeRefreshLayo
     private void dispatchApiRequestToGetPolicyList() {
         showLoader();
 
-        PolicyDataLayer layer = new PolicyDataLayer();
+        PolicyDataLayer policyDataLayer = new PolicyDataLayer();
 
-        layer.getList().observeOn(AndroidSchedulers.mainThread())
+        mApiSubscription = policyDataLayer.getList().observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new AppNetworkObserver<List<Policy>>(this) {
                     @Override
