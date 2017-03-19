@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 
 import java.util.Date;
 
+import au.com.iag.BuildConfig;
 import au.com.iag.network.deserializer.DateTimeDeserializer;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -16,8 +17,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public abstract class BaseDataLayer {
 
-    protected abstract String getBaseUrl();
-
     Retrofit mRetrofit;
 
     BaseDataLayer() {
@@ -28,7 +27,7 @@ public abstract class BaseDataLayer {
         mRetrofit = new Retrofit.Builder()
                 .addConverterFactory(getGsonConverterFactory())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl(getBaseUrl())
+                .baseUrl(BuildConfig.BASE_API_URL)
                 .build();
     }
 

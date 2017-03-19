@@ -20,11 +20,6 @@ public class PolicyDataLayer extends BaseDataLayer {
         mAPIInterface = getRetrofit().create(APIInterface.class);
     }
 
-    @Override
-    protected String getBaseUrl() {
-        return "https://www.dropbox.com/s/r23f4oxq3qri8n3/";
-    }
-
     public Observable<List<Policy>> getList() {
         HashMap<String, Integer> queryMap = new HashMap<>();
         queryMap.put("dl", 1);

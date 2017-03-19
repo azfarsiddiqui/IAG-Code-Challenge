@@ -12,9 +12,13 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            buildConfigField "String", "BASE_API_URL", "\"https://www.dropbox.com/s/r23f4oxq3qri8n3/\""
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_API_URL", "\"https://www.dropbox.com/s/r23f4oxq3qri8n3/\""
         }
     }
 }
